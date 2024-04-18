@@ -1,0 +1,77 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif; /* Font family */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-color: #f4f4f4; /* Background color */
+}
+
+/* Form styles */
+form {
+    max-width: 500px; /* Maximum width of the form */
+    margin: 20px auto; /* Center the form horizontally with 20px top and bottom margin */
+    padding: 20px; /* Padding inside the form */
+    background: #ffffff; /* Background color of the form */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 10px #c1c1c1; /* Box shadow for the form */
+}
+
+/* Heading styles */
+h1 {
+    text-align: center; /* Center align the heading */
+}
+
+/* Label styles */
+label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Add some bottom margin to labels */
+}
+
+/* Text input styles */
+input[type="text"], select[type="text"] {
+    width: calc(100% - 12px); /* Full width of the container minus padding and borders */
+    padding: 6px; /* Padding inside the text input */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border color */
+    margin-bottom: 10px; /* Add some bottom margin */
+}
+
+/* Submit button styles */
+input[type="submit"] {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    background-color: #4caf50; /* Background color */
+    color: #ffffff; /* Text color */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Change background color on hover */
+}
+
+/* Paragraph styles */
+p {
+    text-align: center; /* Center align paragraphs */
+    font-weight: bold; /* Bold font weight */
+    font-size: 1.2em; /* Font size */
+}
+
+/* Visible class for showing elements */
+.visible {
+    display: block; /* Display as block element */
+}
+
+/* Hidden class for hiding elements */
+.hidden {
+    display: none; /* Hide the element */
+}
+
+/* Radio button styles */
+.radio-group input[type="radio"],
+.radio-group label {
+    display: inline; /* Display radio buttons and labels inline */
+    margin-right: 10px; /* Optional: add some spacing between radio buttons and labels */
+}
