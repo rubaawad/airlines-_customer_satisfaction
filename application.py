@@ -1,8 +1,41 @@
 # Import necessary libraries
 from flask import Flask, render_template, request, redirect
 from sklearn.preprocessing import StandardScaler
+# Import pandas library
+import pandas as pd
 import numpy as np
 import joblib
+
+def get_data_as_data_frame(self):
+        try:
+            custom_data_input_dict = {
+                "Age": [self.Age],
+                "Flight Distance": [self.Flight_Distance],
+                "Inflight wifi service": [self.Inflight_wifi_service],
+                "Departure/Arrival time convenient": [self.Departure_Arrival_time_convenient],
+                "Ease of Online booking": [self.Ease_of_Online_booking],
+                "Gate location": [self.Gate_location],
+                "Food and drink": [self.Food_and_drink],
+                "Online boarding": [self.Online_boarding],
+                "Seat comfort": [self.Seat_comfort],
+                "Inflight entertainment": [self.Inflight_entertainment],
+                "On-board service": [self.On_board_service],
+                "Leg room service": [self.Leg_room_service],
+                "Baggage handling": [self.Baggage_handling],
+                "Checkin service": [self.Checkin_service],
+                "Inflight service": [self.Inflight_service],
+                "Cleanliness": [self.Cleanliness],
+                "Arrival Delay in Minutes": [self.Arrival_Delay_in_Minutes],
+                "Gender": [self.Gender],
+                "Customer Type": [self.Customer_Type],
+                "Type of Travel": [self.Type_of_Travel],
+                "Class": [self.Class]
+            }
+
+            return pd.DataFrame(custom_data_input_dict)
+
+        except Exception as e:
+            raise Exception(e)
 
 # Define a class to represent the input data
 class CustomData:
@@ -63,28 +96,16 @@ scaler = joblib.load('scaler.pkl')
 
 # Define a function to make predictions
 def make_predictions(scaler, input_data):
-    # Check if input_data has the correct format and dimensions
-    if not isinstance(input_data, (tuple, list)):
-        raise ValueError("Input data must be a tuple or a list.")
+    # Ensure that input_data is a 2D array
+    input_data_2d = np.array(input_data).reshape(1, -1)
     
-    # Convert input data to a numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
-
-    # Reshape the array as we are predicting one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-
     # Standardize the input data
-    std_data = scaler.transform(input_data_reshaped)
+    std_data = scaler.transform(input_data_2d)
 
     # Make predictions using the model
     predictions = model.predict(std_data)
     
     return predictions
-
-# Define route for the index page
-@app.route('/')
-def index():
-    return redirect('/predict')  # Redirect to the prediction page
 
 # Define route for predicting data
 @app.route('/predict', methods=['GET', 'POST'])
@@ -116,15 +137,10 @@ def predict_datapoint():
             Type_of_Travel=request.form.get('Type_of_travel'),
             Class=request.form.get('Class')
         )
+        data_as_dataframe = get_data_as_data_frame(data)
 
         # Perform prediction
-        prediction = make_predictions(scaler, [data.Age, data.Flight_Distance, data.Inflight_wifi_service,
-                                                data.Departure_Arrival_time_convenient, data.Ease_of_Online_booking,
-                                                data.Gate_location, data.Food_and_drink, data.Online_boarding,
-                                                data.Seat_comfort, data.Inflight_entertainment, data.On_board_service,
-                                                data.Leg_room_service, data.Baggage_handling, data.Checkin_service,
-                                                data.Inflight_service, data.Cleanliness, data.Arrival_Delay_in_Minutes,
-                                                data.Gender, data.Customer_Type, data.Type_of_Travel, data.Class])
+        prediction = make_predictions(scaler, data_as_dataframe)
 
         # Translate prediction to human-readable format
         prediction_text = "The Customer is likely to be neutral or dissatisfied" if prediction[0] == 1 else "The Customer is likely to be satisfied"
@@ -156,7 +172,6 @@ def predict_datapoint():
 
         # Render the template with prediction result and form data
         return render_template('index.html', prediction=prediction_text, form_data=form_data)
-
 # Run the Flask app
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

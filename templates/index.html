@@ -17,11 +17,17 @@
             background-repeat: no-repeat; /* No background repetition */
             background-attachment: fixed; /* Background doesn't scroll with content */
          }
-         /* Input container styles */
          .input-container {
-            display: inline-block; /* Display inline */
-            margin-right: 20px; /* Right margin */
-         }
+            display: flex; /* Use flexbox to arrange items in a row */
+            justify-content: space-between; /* Distribute space between items */
+            align-items: center; /* Center items vertically */
+            margin-bottom: 20px; /* Add some space between each row */
+        }
+
+.input-container label,
+.input-container input {
+    margin-right: 10px; /* Add some space between label and input */
+}
       </style>
    </head>
    <body>
@@ -31,85 +37,64 @@
             <!-- Numerical features -->
             <div class="input-container">
                 <label for="Age">Age:</label>
-                <input type="text" id="Age" name="Age" value="{{ form_data.Age }}" required><br><br>
+                <input type="text" id="Age" name="Age" value="{{ form_data.Age }}" required>
+                
+                <label for="Flight_distance">Flight Distance:</label>
+                <input type="text" id="Flight_distance" name="Flight_distance" value="{{ form_data.Flight_distance }}" required>
+                
+                <label for="Inflight_wifi_service">Inflight Wifi Service:</label>
+                <input type="text" id="Inflight_wifi_service" name="Inflight_wifi_service" value="{{ form_data.Inflight_wifi_service }}" required>
             </div>
             
-            <div class="input-container">
-                <label for="Flight_distance">Flight Distance:</label>
-                <input type="text" id="Flight_distance" name="Flight_distance" value="{{ form_data.Flight_distance }}" required><br><br>
-            </div>
-    
-            <div class="input-container">
-                <label for="Inflight_wifi_service">Inflight Wifi Service:</label>
-                <input type="text" id="Inflight_wifi_service" name="Inflight_wifi_service" value="{{ form_data.Inflight_wifi_service }}" required><br><br>
-            </div>
     
             <div class="input-container">
                 <label for="Departure_arrival_time_convenient">Departure/Arrival Time Convenient:</label>
-                <input type="text" id="Departure_arrival_time_convenient" name="Departure_arrival_time_convenient" value="{{ form_data.Departure_arrival_time_convenient }}" required><br><br>
-            </div>
-
-            <div class="input-container">
+                <input type="text" id="Departure_arrival_time_convenient" name="Departure_arrival_time_convenient" value="{{ form_data.Departure_arrival_time_convenient }}" required>
+            
                 <label for="Ease_of_online_booking">Ease of Online booking:</label>
-                <input type="text" id="Ease_of_online_booking" name="Ease_of_online_booking" value="{{ form_data.Ease_of_online_booking }}" required><br><br>
-            </div>
-
-            <div class="input-container">
+                <input type="text" id="Ease_of_online_booking" name="Ease_of_online_booking" value="{{ form_data.Ease_of_online_booking }}" required>
                 <label for="Gate_location">Gate location:</label>
                 <input type="text" id="Gate_location" name="Gate_location" value="{{ form_data.Gate_location }}" required><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Food_and_drink">Food_and_drink:</label>
-                <input type="text" id="Food_and_drink" name="Food_and_drink" value="{{ form_data.Food_and_drink }}" required><br><br>
-            </div>
+                <label for="Food_and_drink">Food and drink:</label>
+                <input type="text" id="Food_and_drink" name="Food_and_drink" value="{{ form_data.Food_and_drink }}" required>
+            
+                <label for="Online_boarding">Online boarding:</label>
+                <input type="text" id="Online_boarding" name="Online_boarding" value="{{ form_data.Online_boarding }}" required>
 
-            <div class="input-container">
-                <label for="Online_boarding">Online_boarding:</label>
-                <input type="text" id="Online_boarding" name="Online_boarding" value="{{ form_data.Online_boarding }}" required><br><br>
-            </div>
-
-            <div class="input-container">
                 <label for="Seat_comfort">Seat_comfort:</label>
                 <input type="text" id="Seat_comfort" name="Seat_comfort" value="{{ form_data.Seat_comfort }}" required><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Inflight_entertainment">Inflight_entertainment:</label>
+                <label for="Inflight_entertainment">Inflight entertainment:</label>
                 <input type="text" id="Inflight_entertainment" name="Inflight_entertainment" value="{{ form_data.Inflight_entertainment }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="On_board_service">On_board_service:</label>
+            
+                <label for="On_board_service">On board service:</label>
                 <input type="text" id="On_board_service" name="On_board_service" value="{{ form_data.On_board_service }}"><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Leg_room_service">Leg_room_service:</label>
+            
+                <label for="Leg_room_service">Leg room service:</label>
                 <input type="text" id="Leg_room_service" name="Leg_room_service" value="{{ form_data.Leg_room_service }}" required><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Baggage_handling">Baggage_handling:</label>
-                <input type="text" id="Baggage_handling" name="Baggage_handling" value="{{ form_data.Baggage_handling }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Checkin_service">Checkin_service:</label>
-                <input type="text" id="Checkin_service" name="Checkin_service" value="{{ form_data.Checkin_service }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Inflight_service">Inflight_service:</label>
+                <label for="Baggage_handling">Baggage handling:</label>
+                <input type="text" id="Baggage_handling" name="Baggage_handling" value="{{ form_data.Baggage_handling }}" required>
+            
+                <label for="Checkin_service">Checkin service:</label>
+                <input type="text" id="Checkin_service" name="Checkin_service" value="{{ form_data.Checkin_service }}" required>
+           
+                <label for="Inflight_service">Inflight service:</label>
                 <input type="text" id="Inflight_service" name="Inflight_service" value="{{ form_data.Inflight_service }}" required><br><br>
             </div>
 
             <div class="input-container">
                 <label for="Cleanliness">Cleanliness:</label>
-                <input type="text" id="Cleanliness" name="Cleanliness" value="{{ form_data.Cleanliness }}" required><br><br>
-            </div>
-            <div class="input-container">
-                <label for="Arrival_delay_in_minutes">Arrival_Delay_in_Minutes:</label>
+                <input type="text" id="Cleanliness" name="Cleanliness" value="{{ form_data.Cleanliness }}" required>
+            
+                <label for="Arrival_delay_in_minutes">Arrival Delay in Minutes:</label>
                 <input type="text" id="Arrival_delay_in_minutes" name="Arrival_delay_in_minutes" value="{{ form_data.Arrival_delay_in_minutes }}" required><br><br>
             </div>
             <br></br>
@@ -121,26 +106,21 @@
                 <select type="text" id="Gender" name="Gender">
                     <option  value="0" {% if form_data.Gender == "Male" %} selected {% endif %}>Male</option>
                     <option  value="1" {% if form_data.Gender == "Female" %} selected {% endif %}>Female</option>
-                </select><br><br>
-            </div>
+                </select>
 
-            <div class="input-container">
                 <label for="Customer_type">Customer Type:</label>
                 <select type="text" id="Customer_type" name="Customer_type">
                     <option value="0" {% if form_data.Customer_Type == "Loyal Customer" %} selected {% endif %}>Loyal Customer</option>
                     <option value="1" {% if form_data.Customer_Type == "Disloyal Customer" %} selected {% endif %}>Disloyal Customer</option>
-                </select><br><br>
-            </div>
-            <br></br>
+                </select>
+                </div>
             <div class="input-container">
                 <label for="Type_of_travel">Type of Travel:</label>
                 <select type="text" id="Type_of_travel" name="Type_of_travel">
                     <option value="0" {% if form_data.Type_of_Travel == "Business travel" %} selected {% endif %}>Business travel</option>
                     <option value="1" {% if form_data.Type_of_Travel == "Personal Travel" %} selected {% endif %}>Personal Travel</option>
                 </select><br><br>
-            </div>
-
-            <div class="input-container">
+           
                 <label for="Class">Class:</label>
                 <select type="text" id="Class" name="Class">
                     <option value="0" {% if form_data.Class == "Business" %} selected {% endif %}>Business</option>
@@ -154,7 +134,7 @@
              <!-- <input type="submit" value="Predict" class="form-submit"> -->
         <span id="predictionResult" class='{{"visible" if prediction else "hidden"}}'>
             <h1>Customer Satisfaction Result</h1>
-            <p style="color: white !important;">The prediction result is: {{ prediction }}</p>
+            <p style="color: black !important;">The prediction result is: {{ prediction }}</p>
         </span>
     </div>
 </body>
