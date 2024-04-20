@@ -96,12 +96,13 @@ scaler = joblib.load('scaler.pkl')
 
 # Define a function to make predictions
 def make_predictions(scaler, input_data):
+    print ("input data ",input_data)
     # Ensure that input_data is a 2D array
     input_data_2d = np.array(input_data).reshape(1, -1)
     
     # Standardize the input data
     std_data = scaler.transform(input_data_2d)
-
+    print ("data for predict ",std_data)
     # Make predictions using the model
     predictions = model.predict(std_data)
     
@@ -141,32 +142,33 @@ def predict_datapoint():
 
         # Perform prediction
         prediction = make_predictions(scaler, data_as_dataframe)
+        print("prediction",prediction[0])
 
         # Translate prediction to human-readable format
-        prediction_text = "The Customer is likely to be neutral or dissatisfied" if prediction[0] == 1 else "The Customer is likely to be satisfied"
+        prediction_text = "Happy" if prediction[0] == 1 else "Sad"
         
         # Pass form data back to the template
         form_data = {
             'Age': float(request.form.get('Age')),
-            'Flight Distance': float(request.form.get('Flight_distance')),
-            'Inflight wifi service': float(request.form.get('Inflight_wifi_service')),
-            'Departure/Arrival time convenient': float(request.form.get('Departure_arrival_time_convenient')),
-            'Ease of Online booking': float(request.form.get('Ease_of_online_booking')),
-            'Gate location': float(request.form.get('Gate_location')),
-            'Food and drink': float(request.form.get('Food_and_drink')),
-            'Online boarding': float(request.form.get('Online_boarding')),
-            'Seat comfort': float(request.form.get('Seat_comfort')),
-            'Inflight entertainment': float(request.form.get('Inflight_entertainment')),
-            'On-board service': float(request.form.get('On_board_service')),
-            'Leg room service': float(request.form.get('Leg_room_service')),
-            'Baggage handling': float(request.form.get('Baggage_handling')),
-            'Checkin service': float(request.form.get('Checkin_service')),
-            'Inflight service': float(request.form.get('Inflight_service')),
+            'Flight_distance': float(request.form.get('Flight_distance')),
+            'Inflight_wifi_service': float(request.form.get('Inflight_wifi_service')),
+            'Departure_arrival_time_convenient': float(request.form.get('Departure_arrival_time_convenient')),
+            'Ease_of_online_booking': float(request.form.get('Ease_of_online_booking')),
+            'Gate_location': float(request.form.get('Gate_location')),
+            'Food_and_drink': float(request.form.get('Food_and_drink')),
+            'Online_boarding': float(request.form.get('Online_boarding')),
+            'Seat_comfort': float(request.form.get('Seat_comfort')),
+            'Inflight_entertainment': float(request.form.get('Inflight_entertainment')),
+            'On_board_service': float(request.form.get('On_board_service')),
+            'Leg_room_service': float(request.form.get('Leg_room_service')),
+            'Baggage_handling': float(request.form.get('Baggage_handling')),
+            'Checkin_service': float(request.form.get('Checkin_service')),
+            'Inflight_service': float(request.form.get('Inflight_service')),
             'Cleanliness': float(request.form.get('Cleanliness')),
-            'Arrival Delay in Minutes': float(request.form.get('Arrival_delay_in_minutes')),
+            'Arrival_delay_in_minutes': float(request.form.get('Arrival_delay_in_minutes')),
             'Gender': request.form.get('Gender'),
-            'Customer Type': request.form.get('Customer_type'),
-            'Type of Travel': request.form.get('Type_of_travel'),
+            'Customer_type': request.form.get('Customer_type'),
+            'Type_of_travel': request.form.get('Type_of_travel'),
             'Class': request.form.get('Class')
         }
 
