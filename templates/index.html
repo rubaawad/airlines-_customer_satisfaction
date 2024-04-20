@@ -26,14 +26,16 @@
    </head>
    <body>
     <div class="container">
-        <h1>Customer Satisfaction Prediction Form</h1>
+        <span id="predictionResult" class='{{"hidden" if prediction else "visible"}}'>
+            <h1>Customer Satisfaction Prediction Form</h1>
+        </span>
         <span id="predictionResult" class='{{"visible" if prediction else "hidden"}}'>
             <h1>Customer Satisfaction Result is </h1>
             {% if prediction %}
                 {% if prediction == "Happy" %}
-                    <p style="color: black !important;">😊</p> <!-- Unicode for smiling face -->
+                    <p style="color: black !important;">Happy 😊</p> <!-- Unicode for smiling face -->
                 {% elif prediction == "Sad" %}
-                    <p style="color: black !important;">😞</p> <!-- Unicode for sad face -->
+                    <p style="color: black !important;">Sad 😞</p> <!-- Unicode for sad face -->
                 {% endif %}
             {% endif %}
         </span>
