@@ -22,14 +22,17 @@ Sure, here's a README file for your airlines_customer_satisfaction GitHub projec
     # Model Training Notebook
         MODEL TRAINING.ipynb: Notebook for training machine learning models.
 # Data
-    The project uses the airlines_customer_satisfaction Dataset from Kaggle, which contains various  features such as demographic information, flight details, service ratings, travel preferences, and other relevant factors. These features are essential in understanding the factors that influence customer satisfaction. The dataset is preprocessed before training the models.
+    The project uses the airlines_customer_satisfaction Dataset from Kaggle, which contains various  features such as
+    demographic information, flight details
+    service ratings
+    travel preferences
+    and other relevant factors. 
+    These features are essential in understanding the factors that influence customer satisfaction. The dataset is preprocessed before training the models.
 
 # Models
     The project employs several machine learning models, including:
-    Logistic Regression
     K-Nearest Neighbors
-    Gradient Boosting
-    Support Vector Machine
+    XGBoost
     Decision Tree
     Random Forest
 
